@@ -1,0 +1,30 @@
+name: docs publish
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  build:
+    name: build and publish docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up Python 3.14
+        uses: actions/setup-python@v6.0.0
+        with:
+          python-version: 3.14
+
+      - name: Install sphinx
+        run: pip install sphinx
+
+      - name: Build docs
+        run: cd docs && make html
+
+      - name: Publish docs to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/build/html
