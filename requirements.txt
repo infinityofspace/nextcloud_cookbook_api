@@ -1,0 +1,6 @@
+requests>=2.0,<3.0
+pydantic>=2.0,<3.0
+setuptools>=41.6.0
+sphinx~=9.0
+ruff~=0.14
+responses~=0.25
