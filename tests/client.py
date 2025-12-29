@@ -187,7 +187,7 @@ class TestCookbookClient(unittest.TestCase):
             status=200,
         )
 
-        with self.assertRaises(ValueError) as context:
+        with self.assertRaises(ValueError):
             self.client.rename_category("NonExistent", "NewName")
 
     @responses.activate
